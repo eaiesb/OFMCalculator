@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<project name="ant-compile-project" default="compile-package" basedir=".">
+<property file="dev_build.properties"/> 
+<property name="deploy.dir" value="${basedir}/deploy"/>
+<target name="compile-package"> 
+<property name="sca-inf.classes.dir" value="../SCA-INF/classes"/> 
+<mkdir dir="${sca-inf.classes.dir}"/> 
+<ant antfile="${antfile_pack}" target="package" inheritall="false"> 
+<property name="oracle.home" value="${oracle.home1}"/> 
+<property name="compositeDir" value="${basedir}"/> 
+<property name="scac.application.home" value="${basedir}/.."/> 
+<property name="compositeName" value="${compositeName1}"/> 
+<property name="revision" value="${revision1}"/> 
+<property name="java.passed.home" value="${java.passed.home1}"/> 
+<property name="wl_home" value="${wl_home1}"/>
+</ant> 
+<ant antfile="${antfile_deploy}" target="deploy" inheritall="false"> 
+<property name="compositeName" value="${compositeName1}"/> 
+<property name="revision" value="${revision1}"/> 
+<property name="overwrite" value="true" />
+<property name="user" value="${user1}"/> 
+<property name="password" value="${password1}"/> 
+<property name="serverURL" value="${serverURL1}"/> 
+<property name="partition" value="${parition1}"/> 
+<property name="sarLocation" value="${deploy.dir}/sca_${compositeName1}_rev${revision1}.jar"/> 
+</ant>
+<ant antfile="${antfile_test}" target="test" inheritall="false">
+<property name="scatest.input" value="${project}"/>
+<property name="scatest.format" value="junit"/>
+<property name="scatest.result" value="/app/ciplatform/jenkins/workspace/Calculator_dev/Calculator"/>
+<property name="scatest.partition" value="default"/>
+<property name="jndi.properties.input" value="dev.jndi.properties"/>
+</ant>
+</target>
+</project>
