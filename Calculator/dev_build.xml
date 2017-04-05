@@ -27,7 +27,7 @@
 <ant antfile="${antfile_test}" target="test" inheritall="false">
 <property name="scatest.input" value="${project}"/>
 <property name="scatest.format" value="junit"/>
-<property name="scatest.result" value="${basedir}\\Calculator"/>
+<property name="scatest.result" value="${basedir}"/>
 <property name="scatest.partition" value="default"/>
 <property name="jndi.properties.input" value="${basedir}\\Calculator\\dev.jndi.properties"/>
 </ant>
