@@ -29,7 +29,7 @@
 <property name="scatest.format" value="junit"/>
 <property name="scatest.result" value="${basedir}"/>
 <property name="scatest.partition" value="default"/>
-<property name="jndi.properties.input" value="${basedir}\\Calculator\\dev.jndi.properties"/>
+<property name="jndi.properties.input" value="${basedir}\\dev.jndi.properties"/>
 </ant>
 </target>
 </project>
